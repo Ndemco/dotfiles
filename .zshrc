@@ -1,5 +1,11 @@
 eval "$(starship init zsh)"
 
+dev() {
+  case "$1" in
+    -laptop) tmuxinator start dev ;;
+    *)       tmuxinator start dev-ultra ;;
+  esac
+}
 alias lg='lazygit'
 alias ld='lazydocker'
 alias lq='lazysql'

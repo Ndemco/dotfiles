@@ -9,6 +9,7 @@ macOS dev environment setup. Clone this repo and run `install.sh` on a new machi
 - **Kitty** — terminal emulator config and Catppuccin Mocha theme
 - **Neovim** — full IDE setup with LSP, autocompletion, and plugins (see [neovim/README.md](neovim/README.md))
 - **Karabiner-Elements** — keyboard remapping (Cmd+Shift+H/L for tab switching in Firefox and Chrome)
+- **tmux** — terminal multiplexer with mouse support enabled
 - **Hammerspoon** — global app launch hotkeys
 - **macOS defaults** — key repeat rate settings
 

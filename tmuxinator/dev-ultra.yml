@@ -1,0 +1,10 @@
+name: dev-ultra
+root: <%= ENV['PWD'] %>
+
+windows:
+  - main:
+      layout: even-horizontal
+      panes:
+        - claude
+        - nvim .
+        -
