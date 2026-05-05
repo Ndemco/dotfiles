@@ -7,6 +7,7 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 brew "lazygit"
 brew "lazydocker"
+brew "lazysql"
 
 # Fonts
 cask "font-jetbrains-mono-nerd-font"
