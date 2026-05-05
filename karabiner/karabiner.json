@@ -4,13 +4,14 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Firefox tab navigation remap (Cmd+Shift+[ → H, Cmd+Shift+] → L)",
+                        "description": "Browser tab navigation remap (Cmd+Shift+[ → H, Cmd+Shift+] → L)",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^org\\.mozilla\\.firefox$"
+                                            "^org\\.mozilla\\.firefox$",
+                                            "^com\\.google\\.Chrome$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -34,7 +35,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^org\\.mozilla\\.firefox$"
+                                            "^org\\.mozilla\\.firefox$",
+                                            "^com\\.google\\.Chrome$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -58,7 +60,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^org\\.mozilla\\.firefox$"
+                                            "^org\\.mozilla\\.firefox$",
+                                            "^com\\.google\\.Chrome$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -82,7 +85,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^org\\.mozilla\\.firefox$"
+                                            "^org\\.mozilla\\.firefox$",
+                                            "^com\\.google\\.Chrome$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
