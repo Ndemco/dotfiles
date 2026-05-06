@@ -1,9 +1,11 @@
 eval "$(starship init zsh)"
 
 dev() {
+  local session
+  session=$(basename "$PWD")
   case "$1" in
-    -laptop) tmuxinator start dev ;;
-    *)       tmuxinator start dev-ultra ;;
+    -laptop) tmuxinator start dev-laptop --name "$session" ;;
+    *)       tmuxinator start dev-ultra  --name "$session" ;;
   esac
 }
 alias lg='lazygit'
@@ -19,3 +21,9 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Syntax highlighting (must be last)
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"
+[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
+export PATH="$HOME/.local/bin:$PATH"
+export GITLAB_API_TOKEN=REDACTED

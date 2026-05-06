@@ -15,11 +15,8 @@ hs.hotkey.bind({"cmd", "ctrl"}, "J", function()
   focus("IntelliJ IDEA")
 end)
 
--- cmd + ctrl + K  → Firefox (Mozilla)
+-- cmd + ctrl + K  → Google Chrome
 hs.hotkey.bind({"cmd", "ctrl"}, "K", function()
-  -- For Firefox:
-  -- Name: "Firefox"
-  -- Bundle: "org.mozilla.firefox"
-  focus("Firefox")
+  focus("Google Chrome")
 end)
 
