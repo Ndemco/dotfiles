@@ -48,4 +48,15 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+
+  -- Markdown rendering
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    ft = { "markdown" },
+    keys = {
+      { "<leader>md", "<cmd>RenderMarkdown toggle<cr>", desc = "Toggle markdown render", ft = "markdown" },
+    },
+    opts = {},
+  },
 }
