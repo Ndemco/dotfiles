@@ -19,8 +19,13 @@ return {
         map("<leader>hs", gs.stage_hunk, "Stage hunk")
         map("<leader>hr", gs.reset_hunk, "Reset hunk")
         map("<leader>hp", gs.preview_hunk, "Preview hunk")
-        map("<leader>hb", gs.blame_line, "Blame line")
       end,
+    },
+  },
+  {
+    "tpope/vim-fugitive",
+    keys = {
+      { "<leader>gb", "<cmd>Git blame<cr>", desc = "Git blame" },
     },
   },
 }
