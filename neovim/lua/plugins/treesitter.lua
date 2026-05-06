@@ -7,7 +7,7 @@ return {
         ensure_installed = {
           "javascript", "typescript", "tsx",
           "lua", "json", "html", "css",
-          "markdown", "bash",
+          "markdown", "markdown_inline", "bash",
         },
         auto_install = true,
       })
