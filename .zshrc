@@ -1,9 +1,11 @@
 eval "$(starship init zsh)"
 
 dev() {
+  local session
+  session=$(basename "$PWD")
   case "$1" in
-    -laptop) tmuxinator start dev ;;
-    *)       tmuxinator start dev-ultra ;;
+    -laptop) tmuxinator start dev-laptop --name "$session" ;;
+    *)       tmuxinator start dev-ultra  --name "$session" ;;
   esac
 }
 alias lg='lazygit'
