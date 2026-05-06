@@ -17,6 +17,7 @@ brew "tmuxinator"
 cask "font-jetbrains-mono-nerd-font"
 
 # GUI apps
+cask "docker"
 cask "dbeaver-community"
 cask "kitty"
 cask "hammerspoon"
