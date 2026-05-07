@@ -1,3 +1,4 @@
+# Hook Starship into zsh to render the prompt before each command
 eval "$(starship init zsh)"
 
 dev() {
@@ -21,6 +22,8 @@ BREW_PREFIX="$(brew --prefix)"
 # Autosuggestions
 source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
+# Lazy-load nvm: stub functions replace themselves with real nvm on first use,
+# avoiding the ~300ms startup cost of sourcing nvm on every shell open.
 export NVM_DIR="$HOME/.nvm"
 _nvm_load() {
   unset -f nvm node npm npx
