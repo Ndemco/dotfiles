@@ -21,3 +21,22 @@ bash ~/repos/dotfiles/install.sh
 ```
 
 The script is idempotent — safe to re-run at any time. It installs Homebrew and all packages via `Brewfile`, then symlinks each config file from this repo to the location the app expects it. If a file already exists at a destination it is backed up as `.bak` before being replaced.
+
+---
+
+## ⚠️ IMPORTANT: Machine-specific secrets
+
+> **Do not put API tokens, client credentials, or machine-specific config in `.zshrc`.**
+> Instead, put them in `~/.zsh_secrets` — this file is gitignored and never committed to this repo.
+
+Put API tokens, client credentials, work-specific config, or anything you don't want synced across machines here:
+
+```bash
+# ~/.zsh_secrets
+export GITLAB_API_TOKEN="your-token-here"
+export SOME_CLIENT_API_KEY="..."
+```
+
+`.zshrc` loads this file automatically on shell startup. If it doesn't exist, nothing breaks — but your tokens won't be set.
+
+---
