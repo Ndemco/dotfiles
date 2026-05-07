@@ -5,6 +5,7 @@ eval "$(starship init zsh)"
 dev() {
   local session
   session=$(basename "$PWD")
+  printf '\033]2;dev %s\033\\' "$session"
   case "$1" in
     -laptop) tmuxinator start dev-laptop --name "$session" ;;
     *)       tmuxinator start dev-ultra  --name "$session" ;;
