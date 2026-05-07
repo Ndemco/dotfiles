@@ -22,19 +22,14 @@ fi
 echo "Installing packages..."
 brew bundle --file="$DOTFILES_DIR/Brewfile" || echo "[warn] Some packages failed to install, continuing..."
 
-# --- Node via nvm ---
-NVM_SCRIPT="$(brew --prefix)/opt/nvm/nvm.sh"
-if [ -s "$NVM_SCRIPT" ]; then
-  export NVM_DIR="$HOME/.nvm"
-  mkdir -p "$NVM_DIR"
-  # shellcheck source=/dev/null
-  source "$NVM_SCRIPT"
-  nvm install --lts
-  # Pin the default alias to the exact version so Neovim can resolve the path
-  nvm alias default "$(node --version)"
-  echo "[done] node $(node --version) installed via nvm"
+# --- Node via fnm ---
+if command -v fnm &>/dev/null; then
+  eval "$(fnm env)"
+  fnm install --lts
+  fnm default lts-latest
+  echo "[done] node $(node --version) installed via fnm"
 else
-  echo "[warn] nvm not found, skipping node install"
+  echo "[warn] fnm not found, skipping node install"
 fi
 
 # --- Symlinks ---

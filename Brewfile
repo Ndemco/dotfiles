@@ -1,8 +1,7 @@
 # CLI tools
 brew "neovim"
 brew "tree-sitter"
-brew "node"
-brew "nvm"
+brew "fnm"
 brew "ripgrep"
 brew "starship"
 brew "zsh-autosuggestions"
@@ -17,6 +16,7 @@ brew "tmuxinator"
 cask "font-jetbrains-mono-nerd-font"
 
 # GUI apps
+cask "docker"
 cask "dbeaver-community"
 cask "kitty"
 cask "hammerspoon"

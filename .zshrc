@@ -1,5 +1,7 @@
+# Hook Starship into zsh to render the prompt before each command
 eval "$(starship init zsh)"
 
+# Tmuxinator sessions for development
 dev() {
   local session
   session=$(basename "$PWD")
@@ -8,22 +10,27 @@ dev() {
     *)       tmuxinator start dev-ultra  --name "$session" ;;
   esac
 }
+
+# Aliases
 alias lg='lazygit'
 alias ld='lazydocker'
 alias lq='lazysql'
 
-# Git completion (usually already present)
+# Git completion
 autoload -Uz compinit
 compinit
 
+BREW_PREFIX="$(brew --prefix)"
+
 # Autosuggestions
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+# Node via fnm — auto-switches when entering a dir with .nvmrc / .node-version
+eval "$(fnm env --use-on-cd)"
+
+# For environment variables you don't want commited to git
+[ -f "$HOME/.zsh_secrets" ] && source "$HOME/.zsh_secrets"
 
 # Syntax highlighting (must be last)
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"
-[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
+source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 export PATH="$HOME/.local/bin:$PATH"
-export GITLAB_API_TOKEN=glpat-XwV-i5oovGJXO_xF4UZdb2M6MQpvOjEKdTpta2lsNg8.01.170hq2wrf
