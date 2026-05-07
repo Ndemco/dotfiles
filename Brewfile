@@ -1,7 +1,6 @@
 # CLI tools
 brew "neovim"
 brew "tree-sitter"
-brew "node"
 brew "nvm"
 brew "ripgrep"
 brew "starship"

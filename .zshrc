@@ -16,14 +16,22 @@ alias lq='lazysql'
 autoload -Uz compinit
 compinit
 
-# Autosuggestions
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+BREW_PREFIX="$(brew --prefix)"
 
-# Syntax highlighting (must be last)
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Autosuggestions
+source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"
-[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
+_nvm_load() {
+  unset -f nvm node npm npx
+  [ -s "$BREW_PREFIX/opt/nvm/nvm.sh" ] && source "$BREW_PREFIX/opt/nvm/nvm.sh"
+}
+nvm() { _nvm_load; nvm "$@"; }
+node() { _nvm_load; node "$@"; }
+npm() { _nvm_load; npm "$@"; }
+npx() { _nvm_load; npx "$@"; }
+
+# Syntax highlighting (must be last)
+source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 export PATH="$HOME/.local/bin:$PATH"
 [ -f "$HOME/.secrets" ] && source "$HOME/.secrets"
