@@ -43,4 +43,25 @@ vim.opt.splitbelow = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.autoread = true
 
+-- Remove empty unnamed buffers when a real file is opened
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function()
+    for _, buf in ipairs(vim.fn.getbufinfo({ buflisted = 1 })) do
+      if buf.name == "" and buf.changed == 0 then
+        vim.api.nvim_buf_delete(buf.bufnr, {})
+      end
+    end
+  end,
+})
+
+-- Trigger autoread when files change on disk
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  pattern = "*",
+  callback = function()
+    if vim.fn.mode() ~= "c" then
+      vim.cmd("checktime")
+    end
+  end,
+})
+
 require("lazy").setup("plugins")

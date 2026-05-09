@@ -38,8 +38,36 @@ return {
           visible = true,
           hide_dotfiles = false,
         },
+        use_libuv_file_watcher = true,
+        follow_current_file = { enabled = true },
       },
     },
+  },
+
+  -- Buffer tabs
+  {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("bufferline").setup({
+        options = {
+          diagnostics = "nvim_lsp",
+          offsets = {
+            { filetype = "neo-tree", text = "Explorer", highlight = "Directory", separator = true },
+          },
+        },
+      })
+      vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+      vim.keymap.set("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+      vim.keymap.set("n", "<leader>bd", function()
+        local current = vim.fn.bufnr()
+        if #vim.fn.getbufinfo({ buflisted = 1 }) > 1 then
+          vim.cmd("BufferLineCyclePrev")
+        end
+        vim.cmd("bdelete " .. current)
+      end, { desc = "Delete buffer" })
+    end,
   },
 
   -- Keybinding hints
