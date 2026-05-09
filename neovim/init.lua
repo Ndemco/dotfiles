@@ -43,6 +43,10 @@ vim.opt.splitbelow = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.autoread = true
 
+-- Keymaps
+vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Write file" })
+vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", { desc = "Write all files" })
+
 -- Remove empty unnamed buffers when a real file is opened
 vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function()
