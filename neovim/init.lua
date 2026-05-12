@@ -58,6 +58,14 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
+-- Write all buffers when neovim loses focus
+vim.api.nvim_create_autocmd("FocusLost", {
+  pattern = "*",
+  callback = function()
+    vim.cmd("silent! wa")
+  end,
+})
+
 -- Trigger autoread when files change on disk
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
   pattern = "*",
