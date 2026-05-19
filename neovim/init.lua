@@ -32,7 +32,7 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
@@ -44,6 +44,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.autoread = true
 
 -- Keymaps
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Write file" })
 vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", { desc = "Write all files" })
 
