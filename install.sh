@@ -58,6 +58,7 @@ link "$DOTFILES_DIR/hammerspoon/init.lua"     "$HOME/.hammerspoon/init.lua"
 link "$DOTFILES_DIR/neovim"                   "$HOME/.config/nvim"
 link "$DOTFILES_DIR/tmux.conf"               "$HOME/.tmux.conf"
 link "$DOTFILES_DIR/tmuxinator"              "$HOME/.config/tmuxinator"
+[ -e "$DOTFILES_DIR/.zsh_secrets" ] && link "$DOTFILES_DIR/.zsh_secrets" "$HOME/.zsh_secrets"
 
 # --- macOS defaults ---
 echo "Applying macOS settings..."
