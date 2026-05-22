@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
@@ -53,6 +53,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.autoread = true
 
 -- Keymaps
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Write file" })
 vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", { desc = "Write all files" })
 
@@ -64,6 +65,14 @@ vim.api.nvim_create_autocmd("BufReadPost", {
         vim.api.nvim_buf_delete(buf.bufnr, {})
       end
     end
+  end,
+})
+
+-- Write all buffers when neovim loses focus
+vim.api.nvim_create_autocmd("FocusLost", {
+  pattern = "*",
+  callback = function()
+    vim.cmd("silent! wa")
   end,
 })
 
