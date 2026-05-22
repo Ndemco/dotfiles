@@ -17,7 +17,7 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       require("mason-lspconfig").setup({
-        ensure_installed = { "ts_ls", "eslint" },
+        ensure_installed = { "ts_ls", "eslint", "gopls" },
         handlers = {
           function(server_name)
             lspconfig[server_name].setup({ capabilities = capabilities })
