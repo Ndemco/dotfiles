@@ -8,6 +8,7 @@ return {
           "javascript", "typescript", "tsx",
           "lua", "json", "html", "css",
           "markdown", "markdown_inline", "bash",
+          "go", "gomod", "gowork",
         },
         auto_install = true,
       })
