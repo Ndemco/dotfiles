@@ -28,4 +28,24 @@ return {
       { "<leader>gb", "<cmd>Git blame<cr>", desc = "Git blame" },
     },
   },
+  {
+    "sindrets/diffview.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
+    keys = {
+      { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview / merge tool" },
+      { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Close diffview" },
+      { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "File history (current file)" },
+      { "<leader>gH", "<cmd>DiffviewFileHistory<cr>", desc = "File history (repo)" },
+    },
+    opts = {
+      -- 3-way merge layout: OURS (your changes) | result | THEIRS (server)
+      view = {
+        merge_tool = {
+          layout = "diff3_mixed",
+          disable_diagnostics = true,
+        },
+      },
+    },
+  },
 }
