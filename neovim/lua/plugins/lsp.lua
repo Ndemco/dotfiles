@@ -37,8 +37,12 @@ return {
           local map = function(keys, func, desc)
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = desc })
           end
+          -- Remove nvim 0.11 default gr* mappings so `gr` doesn't wait on timeoutlen.
+          for _, k in ipairs({ "grr", "grn", "gra", "gri" }) do
+            pcall(vim.keymap.del, "n", k, { buffer = event.buf })
+          end
           map("gd", vim.lsp.buf.definition, "Go to definition")
-          map("gr", vim.lsp.buf.references, "Go to references")
+          map("gr", "<cmd>FzfLua lsp_references<cr>", "Go to references")
           map("K", vim.lsp.buf.hover, "Hover docs")
           map("<leader>rn", vim.lsp.buf.rename, "Rename")
           map("<leader>ca", vim.lsp.buf.code_action, "Code action")
