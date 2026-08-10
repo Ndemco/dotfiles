@@ -13,16 +13,18 @@ return {
       "neovim/nvim-lspconfig",
     },
     config = function()
-      local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+      vim.lsp.config("*", { capabilities = capabilities })
+
+      vim.lsp.config("kotlin_lsp", {
+        cmd = { "kotlin-lsp", "--stdio" },
+      })
+      vim.lsp.enable("kotlin_lsp")
 
       require("mason-lspconfig").setup({
         ensure_installed = { "ts_ls", "eslint", "gopls" },
-        handlers = {
-          function(server_name)
-            lspconfig[server_name].setup({ capabilities = capabilities })
-          end,
-        },
+        automatic_enable = true,
       })
 
       vim.api.nvim_create_autocmd("BufWritePre", {

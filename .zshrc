@@ -32,6 +32,9 @@ eval "$(fnm env --use-on-cd)"
 # For environment variables you don't want commited to git
 [ -f "$HOME/.zsh_secrets" ] && source "$HOME/.zsh_secrets"
 
+# gcloud CLI needs Python 3.10+; system python3 is 3.9.6
+export CLOUDSDK_PYTHON=/opt/homebrew/bin/python3.12
+
 # Syntax highlighting (must be last)
 source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 export PATH="$HOME/.local/bin:$PATH"

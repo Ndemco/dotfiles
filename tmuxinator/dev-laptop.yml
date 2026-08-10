@@ -2,13 +2,13 @@ name: dev-laptop
 root: <%= ENV['PWD'] %>
 
 windows:
+  - agent:
+      panes:
+        - claude
   - editor:
       layout: main-vertical
       panes:
         - nvim .
-  - agent:
-      panes:
-        - claude
   - shell:
       panes:
         -
